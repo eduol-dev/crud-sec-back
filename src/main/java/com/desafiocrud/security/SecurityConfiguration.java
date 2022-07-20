@@ -30,7 +30,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	 @Override
 	    protected void configure(HttpSecurity http) throws Exception {
 	        http.csrf().disable().authorizeRequests()
-	                .antMatchers("/registration", "/login").permitAll()
+	                .antMatchers("/registration", "/login", "/h2-console/**").permitAll()
 	                .anyRequest().authenticated()
 	                .and()
 	                .addFilter(new AuthenticationFilter(authenticationManager(),SECRET_KEY))

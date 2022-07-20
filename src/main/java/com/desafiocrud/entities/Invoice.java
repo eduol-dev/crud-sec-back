@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -24,12 +25,12 @@ public class Invoice {
 	private UUID id;
 		
 	@ManyToOne()
-	@JoinColumn(name = "user_id", insertable = false, updatable = false)
+	@JoinColumn(name = "user_from")
 	@NotNull(message = "Please inform the sender user.")
 	private User userFrom;
 	
 	@ManyToOne()
-	@JoinColumn(name = "user_id", insertable = false, updatable = false)
+	@JoinColumn(name = "user_to")
 	@NotNull(message = "Please inform the recipient user.")
 	private User userTo;
 		
