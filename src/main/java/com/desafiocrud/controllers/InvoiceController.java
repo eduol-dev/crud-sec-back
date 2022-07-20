@@ -27,23 +27,34 @@ public class InvoiceController {
 
 	@RequestMapping("/")
 	ResponseEntity<List<Invoice>> myInvoicers() {
-		return ResponseEntity.ok(new ArrayList<>());
-	}
-	
-	@RequestMapping("/{id}")
-	ResponseEntity<Invoice> myInvoicers(@PathVariable UUID id) {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		
-		Optional<Invoice> p = Optional.empty();
+		Optional<List<Invoice>> inv = Optional.empty();
 		try {
-			p = invoiceService.findByIdAndUser(id, auth.getName());
+			inv = invoiceService.listByUser();
 		} catch (UserPrincipalNotFoundException e) {
 			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
 		}
-		if(p.isPresent()) {
-			return ResponseEntity.ok(p.get());
+		if(inv.isPresent()) {
+			return ResponseEntity.ok(inv.get());
 		} else {
 			return ResponseEntity.notFound().build();
 		}
 	}
+	
+	@RequestMapping("/{id}")
+	ResponseEntity<Invoice> myInvoicers(@PathVariable UUID id) {
+		
+		Optional<Invoice> inv = Optional.empty();
+		try {
+			inv = invoiceService.findById(id);
+		} catch (UserPrincipalNotFoundException e) {
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+		}
+		if(inv.isPresent()) {
+			return ResponseEntity.ok(inv.get());
+		} else {
+			return ResponseEntity.notFound().build();
+		}
+	}
+	
+	
 }

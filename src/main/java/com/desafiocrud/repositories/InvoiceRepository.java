@@ -1,5 +1,6 @@
 package com.desafiocrud.repositories;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -9,9 +10,9 @@ import com.desafiocrud.entities.Invoice;
 import com.desafiocrud.entities.User;
 
 public interface InvoiceRepository extends JpaRepository<Invoice, UUID> {
-
 	
-	Optional<Invoice> findByIdAndUserTo(UUID id, User userTo);
+	Optional<Invoice> findByIdAndUserTo(UUID id, User userTo);	
 	
+	Optional<List<Invoice>> findByUserTo(User userTo);
 	
 }
