@@ -1,5 +1,6 @@
 package com.crudsec.controllers;
 
+import java.nio.file.attribute.UserPrincipalNotFoundException;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,5 +45,18 @@ public class UserController {
 		boolean valid = passwordEncoder.matches(password, user.getPassword());
 		HttpStatus status = valid ? HttpStatus.OK : HttpStatus.UNAUTHORIZED;
 		return new ResponseEntity<>(status);
+	}
+	
+	@GetMapping("/active2fa")
+	ResponseEntity<String> active2fa(@RequestParam Boolean use2fa) {
+		try {
+			Optional<String> resOpt =  userService.change2fa(use2fa);
+			if(resOpt.isPresent()) {
+				return ResponseEntity.ok(resOpt.get());
+			}
+		} catch (UserPrincipalNotFoundException e) {
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+		}
+		return ResponseEntity.ok().build();
 	}
 }

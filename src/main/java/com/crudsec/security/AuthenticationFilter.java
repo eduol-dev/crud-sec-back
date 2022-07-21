@@ -27,10 +27,12 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 		
 	private AuthenticationManager authenticationManager;	
 	private String secretKey;
+	private Integer expiredTimeInSec;
 	
-	public AuthenticationFilter(AuthenticationManager authenticationManager, String secretKey) {
+	public AuthenticationFilter(AuthenticationManager authenticationManager, String secretKey, Integer expiredTimeInSec) {
 		this.authenticationManager = authenticationManager;
 		this.secretKey = secretKey;
+		this.expiredTimeInSec = expiredTimeInSec;
 	}
 
 	@Override
@@ -46,7 +48,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 	protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain,
 			Authentication authResult) throws IOException, ServletException {
 		SecurityUserDetails userDetail = (SecurityUserDetails) authResult.getPrincipal();
-		Instant in = LocalDateTime.now().plusDays(1).atZone(ZoneId.systemDefault()).toInstant();
+		Instant in = LocalDateTime.now().plusSeconds(expiredTimeInSec).atZone(ZoneId.systemDefault()).toInstant();
 		Date expireAt = Date.from(in);
 		String token = JWT.create()
 						.withSubject(userDetail.getUsername())

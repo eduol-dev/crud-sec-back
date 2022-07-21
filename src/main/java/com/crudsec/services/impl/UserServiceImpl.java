@@ -1,9 +1,12 @@
 package com.crudsec.services.impl;
 
+import java.nio.file.attribute.UserPrincipalNotFoundException;
 import java.security.InvalidParameterException;
 import java.util.Optional;
 
+import org.jboss.aerogear.security.otp.api.Base32;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -15,11 +18,15 @@ import com.crudsec.exceptions.BusinessException;
 import com.crudsec.exceptions.PasswordsNotMatchingException;
 import com.crudsec.repositories.UserRepository;
 import com.crudsec.security.data.SecurityUserDetails;
+import com.crudsec.security.gauth.GAuthProvider;
 import com.crudsec.services.UserService;
 
 @Service
 public class UserServiceImpl implements UserService {
 
+	@Autowired
+	private GAuthProvider gAuthProvider;
+	
 	@Autowired
 	private UserRepository userRepository;
 	
@@ -46,5 +53,22 @@ public class UserServiceImpl implements UserService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Optional<User> userOpt = userRepository.findByUserName(username);
 		return new SecurityUserDetails(userOpt);
+	}
+
+	@Override
+	public Optional<String> change2fa(Boolean use2fa) throws UserPrincipalNotFoundException {
+		String userName = SecurityContextHolder.getContext().getAuthentication().getName();
+		Optional<User> userOpt = userRepository.findByUserName(userName);
+		if (userOpt.isEmpty()) {
+			throw new UserPrincipalNotFoundException(userName);
+		}		
+		User user = userOpt.get();
+		user.setUsing2fa(use2fa);
+		user.setKey2fa(Base32.random());
+		userRepository.save(user);
+		if(use2fa) {
+			return Optional.of(gAuthProvider.buildQRCodUrl(user.getUserName(), user.getKey2fa()));
+		}
+		return Optional.empty();
 	}
 }

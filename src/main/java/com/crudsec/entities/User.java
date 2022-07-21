@@ -29,6 +29,13 @@ public class User {
 	@Column(name = "user_password")
 	private String password;
 	
+	@Column(name = "user_2fa")
+	private Boolean using2fa = false;
+	
+	@JsonProperty(access = Access.WRITE_ONLY)
+	@Column(name = "user_2fa_key")
+	private String key2fa;
+	
 	public User() {}
 	
 	public User(String userName, String password) {
@@ -53,6 +60,22 @@ public class User {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public Boolean getUsing2fa() {
+		return using2fa;
+	}
+
+	public void setUsing2fa(Boolean using2fa) {
+		this.using2fa = using2fa;
+	}
+
+	public String getKey2fa() {
+		return key2fa;
+	}
+
+	public void setKey2fa(String key2fa) {
+		this.key2fa = key2fa;
 	}
 	
 }
