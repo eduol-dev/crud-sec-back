@@ -3,6 +3,7 @@ package com.crudsec.security.gauth;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
+import org.jboss.aerogear.security.otp.Totp;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -19,6 +20,11 @@ public class GAuthProvider {
 			e.printStackTrace();
 		}
 		return result;
+	}
+	
+	public boolean isValidCode(String userKey, String code) {
+		Totp totp = new Totp(userKey);		
+		return totp.verify(code);
 	}
 
 }

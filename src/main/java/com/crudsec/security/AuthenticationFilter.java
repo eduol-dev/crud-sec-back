@@ -38,10 +38,8 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 	@Override
 	public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
 			throws AuthenticationException {
-
 		return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
 				request.getParameter("username"), request.getParameter("password"), new ArrayList<>()));
-
 	}
 
 	@Override
