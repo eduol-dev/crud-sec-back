@@ -1,12 +1,12 @@
-package com.desafiocrud.services;
+package com.crudsec.services;
 
 import java.util.Optional;
 
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import com.desafiocrud.dtos.UserDTO;
-import com.desafiocrud.entities.User;
+import com.crudsec.dtos.UserDTO;
+import com.crudsec.entities.User;
 
 public interface UserService extends UserDetailsService  {
 

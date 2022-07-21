@@ -1,4 +1,4 @@
-package com.desafiocrud.services.impl;
+package com.crudsec.services.impl;
 
 import java.nio.file.attribute.UserPrincipalNotFoundException;
 import java.time.LocalDateTime;
@@ -11,12 +11,12 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.desafiocrud.dtos.InvoiceDTO;
-import com.desafiocrud.entities.Invoice;
-import com.desafiocrud.entities.User;
-import com.desafiocrud.repositories.InvoiceRepository;
-import com.desafiocrud.repositories.UserRepository;
-import com.desafiocrud.services.InvoiceService;
+import com.crudsec.dtos.InvoiceDTO;
+import com.crudsec.entities.Invoice;
+import com.crudsec.entities.User;
+import com.crudsec.repositories.InvoiceRepository;
+import com.crudsec.repositories.UserRepository;
+import com.crudsec.services.InvoiceService;
 
 @Service
 public class InvoiceServiceImpl implements InvoiceService {

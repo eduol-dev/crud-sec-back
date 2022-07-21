@@ -1,4 +1,4 @@
-package com.desafiocrud.dtos;
+package com.crudsec.dtos;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;

@@ -1,4 +1,4 @@
-package com.desafiocrud.controllers;
+package com.crudsec.controllers;
 
 import java.util.Optional;
 
@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.desafiocrud.dtos.UserDTO;
-import com.desafiocrud.entities.User;
-import com.desafiocrud.services.UserService;
+import com.crudsec.dtos.UserDTO;
+import com.crudsec.entities.User;
+import com.crudsec.services.UserService;
 
 @RestController
 public class UserController {

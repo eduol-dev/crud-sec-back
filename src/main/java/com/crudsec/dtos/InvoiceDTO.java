@@ -1,4 +1,4 @@
-package com.desafiocrud.dtos;
+package com.crudsec.dtos;
 
 import java.math.BigDecimal;
 

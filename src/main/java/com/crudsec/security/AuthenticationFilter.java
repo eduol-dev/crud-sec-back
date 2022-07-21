@@ -1,4 +1,4 @@
-package com.desafiocrud.security;
+package com.crudsec.security;
 
 import java.io.IOException;
 import java.time.Instant;
@@ -20,7 +20,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
-import com.desafiocrud.security.data.SecurityUserDetails;
+import com.crudsec.security.data.SecurityUserDetails;
 
 
 public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {

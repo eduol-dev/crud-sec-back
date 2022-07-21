@@ -1,4 +1,4 @@
-package com.desafiocrud.security;
+package com.crudsec.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -10,7 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.desafiocrud.security.service.SecurityServiceImpl;
+import com.crudsec.security.service.SecurityServiceImpl;
 
 @Configuration
 @EnableWebSecurity

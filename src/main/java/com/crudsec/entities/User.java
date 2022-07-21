@@ -1,4 +1,4 @@
-package com.desafiocrud.entities;
+package com.crudsec.entities;
 
 import java.util.UUID;
 

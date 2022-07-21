@@ -1,4 +1,4 @@
-package com.desafiocrud.security.service;
+package com.crudsec.security.service;
 
 import java.util.Optional;
 
@@ -8,9 +8,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
-import com.desafiocrud.entities.User;
-import com.desafiocrud.repositories.UserRepository;
-import com.desafiocrud.security.data.SecurityUserDetails;
+import com.crudsec.entities.User;
+import com.crudsec.repositories.UserRepository;
+import com.crudsec.security.data.SecurityUserDetails;
 
 @Component
 public class SecurityServiceImpl implements UserDetailsService {

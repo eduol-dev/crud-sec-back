@@ -1,4 +1,4 @@
-package com.desafiocrud.security.data;
+package com.crudsec.security.data;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -7,7 +7,7 @@ import java.util.Optional;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.desafiocrud.entities.User;
+import com.crudsec.entities.User;
 
 public class SecurityUserDetails implements UserDetails {
 	

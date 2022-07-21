@@ -1,11 +1,11 @@
-package com.desafiocrud.repositories;
+package com.crudsec.repositories;
 
 import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.desafiocrud.entities.User;
+import com.crudsec.entities.User;
 
 public interface UserRepository extends CrudRepository<User, UUID> {
 

@@ -1,4 +1,4 @@
-package com.desafiocrud.controllers;
+package com.crudsec.controllers;
 
 import java.nio.file.attribute.UserPrincipalNotFoundException;
 import java.util.List;
@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.desafiocrud.dtos.InvoiceDTO;
-import com.desafiocrud.entities.Invoice;
-import com.desafiocrud.services.InvoiceService;
+import com.crudsec.dtos.InvoiceDTO;
+import com.crudsec.entities.Invoice;
+import com.crudsec.services.InvoiceService;
 
 @RestController
 @RequestMapping("invoice")

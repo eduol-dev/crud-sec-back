@@ -1,4 +1,4 @@
-package com.desafiocrud.services;
+package com.crudsec.services;
 
 import java.nio.file.attribute.UserPrincipalNotFoundException;
 import java.util.List;
@@ -7,8 +7,8 @@ import java.util.UUID;
 
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import com.desafiocrud.dtos.InvoiceDTO;
-import com.desafiocrud.entities.Invoice;
+import com.crudsec.dtos.InvoiceDTO;
+import com.crudsec.entities.Invoice;
 
 public interface InvoiceService {
 	

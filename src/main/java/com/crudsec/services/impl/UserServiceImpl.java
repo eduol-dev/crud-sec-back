@@ -1,4 +1,4 @@
-package com.desafiocrud.services.impl;
+package com.crudsec.services.impl;
 
 import java.security.InvalidParameterException;
 import java.util.Optional;
@@ -9,13 +9,13 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.desafiocrud.dtos.UserDTO;
-import com.desafiocrud.entities.User;
-import com.desafiocrud.exceptions.BusinessException;
-import com.desafiocrud.exceptions.PasswordsNotMatchingException;
-import com.desafiocrud.repositories.UserRepository;
-import com.desafiocrud.security.data.SecurityUserDetails;
-import com.desafiocrud.services.UserService;
+import com.crudsec.dtos.UserDTO;
+import com.crudsec.entities.User;
+import com.crudsec.exceptions.BusinessException;
+import com.crudsec.exceptions.PasswordsNotMatchingException;
+import com.crudsec.repositories.UserRepository;
+import com.crudsec.security.data.SecurityUserDetails;
+import com.crudsec.services.UserService;
 
 @Service
 public class UserServiceImpl implements UserService {
