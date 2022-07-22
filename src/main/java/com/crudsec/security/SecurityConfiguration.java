@@ -3,6 +3,7 @@ package com.crudsec.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -14,6 +15,7 @@ import com.crudsec.security.service.SecurityServiceImpl;
 
 @Configuration
 @EnableWebSecurity
+@Order(1)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
 	private int DEFAULT_EXPIRED_TIME = 60 * 60 * 24; // Convert Day in Seconds
@@ -39,7 +41,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	                .anyRequest().authenticated()
 	                .and()
 	                .addFilter(new AuthenticationFilter(authenticationManager(),SECRET_KEY_READ, DEFAULT_EXPIRED_TIME))
-	                .addFilter(new ValidateFilter(authenticationManager(),SECRET_KEY_READ))
+	                .addFilter(new ValidateFilter(authenticationManager(),SECRET_KEY_READ, SECRET_KEY_WRITE))	                
 	                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 	    }
 	
